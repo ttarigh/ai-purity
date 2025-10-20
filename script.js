@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Share functionality
     function getShareText() {
-        return `I scored ${currentScore} on the AI purity test. ${window.location.href}`;
+        return `I scored ${currentScore} on the AI purity test. https://aipuritytest.org`;
     }
     
     // Copy link

@@ -270,6 +270,36 @@ button:hover {
     padding: 15px 30px;
 }
 
+/* Mobile Button Adjustments */
+@media (max-width: 767px) {
+    button {
+        font-size: 0.95em;
+        padding: 10px 18px;
+        margin: 0 4px;
+    }
+    
+    #button-container {
+        margin: 20px 0;
+    }
+    
+    #button-container button {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+    
+    .share-buttons {
+        gap: 10px;
+    }
+    
+    .share-buttons button {
+        font-size: 1em;
+        padding: 12px 20px;
+        flex: 1 1 calc(50% - 5px);
+        min-width: 140px;
+    }
+}
+
 @media (min-width: 768px) {
     .share-buttons {
         flex-wrap: nowrap;
