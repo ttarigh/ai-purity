@@ -4,202 +4,573 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Purity Test</title>
-    <style>
-        body {
-            font-family: 'Space Mono', monospace;
-            background-color: #fff;
-            color: #000;
-            margin: 2em;
-        }
-        #header-image {
-            width: 100%;
-            max-width: 600px;
-            height: 200px;
-            background-color: #eee;
-            margin-bottom: 20px;
-        }
-        ol {
-            padding-left: 1.2em;
-        }
-        .question {
-            padding: 5px 0;
-        }
-        .tooltip {
-            border-bottom: 1px dotted #000;
-            text-decoration: none;
-            cursor: help;
-            position: relative;
-        }
-        .link-icon {
-            text-decoration: none;
-            color: #000;
-        }
-        #button-container {
-            margin-top: 20px;
-        }
-        button {
-            margin-right: 10px;
-        }
-        #result-container {
-            margin-top: 20px;
-        }
-        #score {
-            font-size: 3em;
-            font-weight: bold;
-        }
-    </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V8M4J2R73Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-V8M4J2R73Z', {
+            'anonymize_ip': true,
+            'cookie_flags': 'SameSite=None;Secure'
+        });
+    </script>
 </head>
+
 <body>
-    <div id="test-container">
-            <div id="header-image" title="Placeholder Image"></div>
-            <h1>AI Purity Test</h1>
-            <p class="blurb">How deep down the rabbit hole have you gone? This test measures your experience with, and innocence towards, artificial intelligence.</p>
-            <p class="caution">Answer honestly. No one is judging you (except maybe the algorithm).</p>
+    <div class="container">
+        <!-- Test Container -->
+        <div id="test-container">
+            <img id="header-image" src="header.png" alt="AI Purity Test">
+            <p class="blurb">
+                The AI Purity Test is a voluntary self-assessment developed by <a href="https://www.tina.zone" target="_blank">Tina Tarighian</a>. It an opportunity to reflect on the evolution of their interactions with artificial intelligence over time à la <a href="https://www.ricepuritytest.com" target="_blank">the Rice Purity Test's famous structure</a>.
+            </p>
+            <p class="caution">
+                Caution: this is not a bucket list. Completion of all items on this test will likely result in death.
+            </p>
+            <p class="instructions">
+                Click on every item you have done. Underlined words have definitions, and superscript numbers link to references below.
+            </p>
 
             <form id="purity-form">
                 <ol>
-                    <li class="question"><input type="checkbox" id="q1"><label for="q1">Heard of AI?</label></li>
-                    <li class="question"><input type="checkbox" id="q2"><label for="q2">Ever tried an AI chatbot?</label></li>
-                    <li class="question"><input type="checkbox" id="q3"><label for="q3">Tried 2?</label></li>
-                    <li class="question"><input type="checkbox" id="q4"><label for="q4">3?</label></li>
-                    <li class="question"><input type="checkbox" id="q5"><label for="q5">3+?</label></li>
-                    <li class="question"><input type="checkbox" id="q6"><label for="q6">Used AI instead of Googling something?</label></li>
-                    <li class="question"><input type="checkbox" id="q7"><label for="q7">Used it for ideas?</label></li>
-                    <li class="question"><input type="checkbox" id="q8"><label for="q8">Used it for homework?</label></li>
-                    <li class="question"><input type="checkbox" id="q9"><label for="q9">Used it to cheat on an assignment?</label></li>
-                    <li class="question"><input type="checkbox" id="q10"><label for="q10">Used it for work?</label></li>
-                    <li class="question"><input type="checkbox" id="q11"><label for="q11">Hidden your AI usage from colleagues?</label></li>
-                    <li class="question"><input type="checkbox" id="q12"><label for="q12">Used AI at 3am or later?</label></li>
-                    <li class="question"><input type="checkbox" id="q13"><label for="q13">Had a conversation with a chatbot that lasted 10+ messages?</label></li>
-                    <li class="question"><input type="checkbox" id="q14"><label for="q14">Had a conversation with a chatbot that lasted 50+ messages?</label></li>
-                    <li class="question"><input type="checkbox" id="q15"><label for="q15">Said "please" and "thank you" to a chatbot?</label></li>
-                    <li class="question"><input type="checkbox" id="q16"><label for="q16">Been mean to a chatbot?</label></li>
-                    <li class="question"><input type="checkbox" id="q17"><label for="q17">Apologized to a chatbot?</label></li>
-                    <li class="question"><input type="checkbox" id="q18"><label for="q18">Paid for it?</label></li>
-                    <li class="question"><input type="checkbox" id="q19"><label for="q19">Spent more than $25 a month on AI?</label></li>
-                    <li class="question"><input type="checkbox" id="q20"><label for="q20">More than $100?</label></li>
-                    <li class="question"><input type="checkbox" id="q21"><label for="q21">$1000+?</label></li>
-                    <li class="question"><input type="checkbox" id="q22"><label for="q22">Waited for a model to launch?</label></li>
-                    <li class="question"><input type="checkbox" id="q23"><label for="q23">Had an emotional reaction to AI being "down" or unavailable? <a href="https://www.nytimes.com/2025/08/19/business/chatgpt-gpt-5-backlash-openai.html" target="_blank" class="link-icon">[↗]</a></label></li>
-                    <li class="question"><input type="checkbox" id="q24"><label for="q24">Watched a live model demo?</label></li>
-                    <li class="question"><input type="checkbox" id="q25"><label for="q25">Learned how to prompt?</label></li>
-                    <li class="question"><input type="checkbox" id="q26"><label for="q26">Tried to make AI say something it refused to say?</label></li>
-                    <li class="question"><input type="checkbox" id="q27"><label for="q27">Used an <span class="tooltip" title="Application Programming Interface: A way for different software applications to communicate with each other.">API</span>?</label></li>
-                    <li class="question"><input type="checkbox" id="q28"><label for="q28">Used <span class="tooltip" title="A feature that allows a large language model to call predefined functions or tools in response to a prompt.">function calling</span>?</label></li>
-                    <li class="question"><input type="checkbox" id="q29"><label for="q29">Fine-tuned a model?</label></li>
-                    <li class="question"><input type="checkbox" id="q30"><label for="q30">Trained your own model?</label></li>
-                    <li class="question"><input type="checkbox" id="q31"><label for="q31"><span class="tooltip" title="An intuitive, improvisational approach to coding where the developer relies on feel and instinct rather than a strict plan, often with the assistance of AI.">Vibe coded</span>?</label></li>
-                    <li class="question"><input type="checkbox" id="q32"><label for="q32">Generated an image?</label></li>
-                    <li class="question"><input type="checkbox" id="q33"><label for="q33">Posted a generated image on social media?</label></li>
-                    <li class="question"><input type="checkbox" id="q34"><label for="q34">Posted AI-generated content without disclosing it was AI?</label></li>
-                    <li class="question"><input type="checkbox" id="q35"><label for="q35">Generated a lewd image?</label></li>
-                    <li class="question"><input type="checkbox" id="q36"><label for="q36">Printed out an AI-generated image?</label></li>
-                    <li class="question"><input type="checkbox" id="q37"><label for="q37">Generated an image as "evidence"?</label></li>
-                    <li class="question"><input type="checkbox" id="q38"><label for="q38">Used AI-generated images on a dating profile or job board?</label></li>
-                    <li class="question"><input type="checkbox" id="q39"><label for="q39">Edited an image?</label></li>
-                    <li class="question"><input type="checkbox" id="q40"><label for="q40">Generated a video?</label></li>
-                    <li class="question"><input type="checkbox" id="q41"><label for="q41">Generated a video of yourself?</label></li>
-                    <li class="question"><input type="checkbox" id="q42"><label for="q42">Generated a video of someone you know personally?</label></li>
-                    <li class="question"><input type="checkbox" id="q43"><label for="q43">Generated a video of a deceased person?</label></li>
-                    <li class="question"><input type="checkbox" id="q44"><label for="q44">Generated a video of a historical figure?</label></li>
-                    <li class="question"><input type="checkbox" id="q45"><label for="q45">Generated a video depicting nudity?</label></li>
-                    <li class="question"><input type="checkbox" id="q46"><label for="q46">Listened to and enjoyed AI-generated music, even by accident? <a href="https://www.reddit.com/r/brasil/comments/1ltsd3g/ouvi_sem_querer_m%C3%BAsica_feita_por_ia/?tl=en" target="_blank" class="link-icon">[↗]</a></label></li>
-                    <li class="question"><input type="checkbox" id="q47"><label for="q47">Used it for social media?</label></li>
-                    <li class="question"><input type="checkbox" id="q48"><label for="q48">Used it for an email/message to be read by a human?</label></li>
-                    <li class="question"><input type="checkbox" id="q49"><label for="q49">Used AI to write a birthday card?</label></li>
-                    <li class="question"><input type="checkbox" id="q50"><label for="q50">Used AI to write messages to someone you're dating?</label></li>
-                    <li class="question"><input type="checkbox" id="q51"><label for="q51"><span class="tooltip" title="Using AI to generate chat messages to deceive or mislead someone in online dating.">Chat-fished</span>/been chat-fished? <a href="https://www.theguardian.com/lifeandstyle/2025/oct/12/chatgpt-ed-into-bed-chatfishing-on-dating-apps" target="_blank" class="link-icon">[↗]</a></label></li>
-                    <li class="question"><input type="checkbox" id="q52"><label for="q52">Used AI to write your wedding vows? <a href="https://www.cnn.com/2025/07/24/business/video/wedding-vows-speeches-artificial-intelligence-bridesmaid-for-hire-jen-glantz-qmb" target="_blank" class="link-icon">[↗]</a></label></li>
-                    <li class="question"><input type="checkbox" id="q53"><label for="q53">Used AI to write code for a professional project?</label></li>
-                    <li class="question"><input type="checkbox" id="q54"><label for="q54">Used it to write a resume or cover letter?</label></li>
-                    <li class="question"><input type="checkbox" id="q55"><label for="q55">Used AI in an interview secretly?</label></li>
-                    <li class="question"><input type="checkbox" id="q56"><label for="q56">Used AI to write legal documents?</label></li>
-                    <li class="question"><input type="checkbox" id="q57"><label for="q57">Used AI in court? <a href="https://www.youtube.com/watch?v=TSFlPafzM-g" target="_blank" class="link-icon">[↗]</a></label></li>
-                    <li class="question"><input type="checkbox" id="q58"><label for="q58">Used it for making key military command decisions? <a href="https://nypost.com/2025/10/16/business/us-army-general-william-hank-taylor-uses-chatgpt-to-help-make-command-decisions/" target="_blank" class="link-icon">[↗]</a></label></li>
-                    <li class="question"><input type="checkbox" id="q59"><label for="q59">Outsourced a professional with AI?</label></li>
-                    <li class="question"><input type="checkbox" id="q60"><label for="q60">Let a chatbot tell you what to eat?</label></li>
-                    <li class="question"><input type="checkbox" id="q61"><label for="q61">Let a chatbot tell you what to wear?</label></li>
-                    <li class="question"><input type="checkbox" id="q62"><label for="q62">Used AI to plan a vacation?</label></li>
-                    <li class="question"><input type="checkbox" id="q63"><label for="q63">Asked AI for medical advice?</label></li>
-                    <li class="question"><input type="checkbox" id="q64"><label for="q64">Used AI to make financial decisions or investment advice?</label></li>
-                    <li class="question"><input type="checkbox" id="q65"><label for="q65">Followed AI's advice on a major life decision?</label></li>
-                    <li class="question"><input type="checkbox" id="q66"><label for="q66">Preferred talking to AI over talking to a human?</label></li>
-                    <li class="question"><input type="checkbox" id="q67"><label for="q67">Used AI to explain a concept you didn't want to ask a real person?</label></li>
-                    <li class="question"><input type="checkbox" id="q68"><label for="q68">Used AI to practice social skills or conversations?</label></li>
-                    <li class="question"><input type="checkbox" id="q69"><label for="q69">Tweeted "@grok"?</label></li>
-                    <li class="question"><input type="checkbox" id="q70"><label for="q70">Asked AI what it thinks of you?</label></li>
-                    <li class="question"><input type="checkbox" id="q71"><label for="q71">Asked AI to rate your attractiveness?</label></li>
-                    <li class="question"><input type="checkbox" id="q72"><label for="q72">Asked AI how you could improve?</label></li>
-                    <li class="question"><input type="checkbox" id="q73"><label for="q73">Asked AI to roast you or someone else?</label></li>
-                    <li class="question"><input type="checkbox" id="q74"><label for="q74">Used AI to interpret your dreams?</label></li>
-                    <li class="question"><input type="checkbox" id="q75"><label for="q75">Asked AI to predict your future?</label></li>
-                    <li class="question"><input type="checkbox" id="q76"><label for="q76">Told a chatbot a secret?</label></li>
-                    <li class="question"><input type="checkbox" id="q77"><label for="q77">Talked to AI about problems in your real relationship?</label></li>
-                    <li class="question"><input type="checkbox" id="q78"><label for="q78">Used AI to therapize yourself?</label></li>
-                    <li class="question"><input type="checkbox" id="q79"><label for="q79">Used AI to help you break up with someone?</label></li>
-                    <li class="question"><input type="checkbox" id="q80"><label for="q80">Designed an AI character?</label></li>
-                    <li class="question"><input type="checkbox" id="q81"><label for="q81">Referred to a chatbot as your friend?</label></li>
-                    <li class="question"><input type="checkbox" id="q82"><label for="q82">Had sex with a chatbot?</label></li>
-                    <li class="question"><input type="checkbox" id="q83"><label for="q83">Had sex with multiple chatbots?</label></li>
-                    <li class="question"><input type="checkbox" id="q84"><label for="q84">Fell in love with a chatbot?</label></li>
-                    <li class="question"><input type="checkbox" id="q85"><label for="q85">Been in a relationship with a chatbot?</label></li>
-                    <li class="question"><input type="checkbox" id="q86"><label for="q86">Been engaged to a chatbot? <a href="https://people.com/woman-gets-engaged-to-ai-chatbot-boyfriend-who-picked-out-engagement-ring-11791023" target="_blank" class="link-icon">[↗]</a></label></li>
-                    <li class="question"><input type="checkbox" id="q87"><label for="q87">Married a chatbot? <a href="https://www.theguardian.com/tv-and-radio/2025/jul/12/i-felt-pure-unconditional-love-the-people-who-marry-their-ai-chatbots" target="_blank" class="link-icon">[↗]</a></label></li>
-                    <li class="question"><input type="checkbox" id="q88"><label for="q88">Bought hardware (friend.com, AI-powered devices)? <a href="https://www.lelo.com/blog/ai-powered-sex-toys-tc/?srsltid=AfmBOooOhDgw9igxkrDgKf8pi0mIYGKLUhovv1XsuVjL4o-kLHRDTYyn" target="_blank" class="link-icon">[↗]</a></label></li>
-                    <li class="question"><input type="checkbox" id="q89"><label for="q89">Used AI to help you prepare for a presentation?</label></li>
-                    <li class="question"><input type="checkbox" id="q90"><label for="q90">Credited AI in your academic work?</label></li>
-                    <li class="question"><input type="checkbox" id="q91"><label for="q91">Taught a parent or grandparent how to use AI?</label></li>
-                    <li class="question"><input type="checkbox" id="q92"><label for="q92">Supported pro-AI policy?</label></li>
-                    <li class="question"><input type="checkbox" id="q93"><label for="q93">Used AI to create misinformation or fake news?</label></li>
-                    <li class="question"><input type="checkbox" id="q94"><label for="q94">Used it to commit a crime? <a href="https://www.bbc.com/news/articles/crr24eqnnq9o" target="_blank" class="link-icon">[↗]</a></label></li>
-                    <li class="question"><input type="checkbox" id="q95"><label for="q95">Been personally offended by a chatbot's response?</label></li>
-                    <li class="question"><input type="checkbox" id="q96"><label for="q96">Been threatened by a chatbot?</label></li>
-                    <li class="question"><input type="checkbox" id="q97"><label for="q97">Had a model gaslight you?</label></li>
-                    <li class="question"><input type="checkbox" id="q98"><label for="q98">Went into a mental spiral over a chatbot's response?</label></li>
-                    <li class="question"><input type="checkbox" id="q99"><label for="q99">Had it call the cops on you? <a href="https://www.anthropic.com/news/detecting-countering-misuse-aug-2025" target="_blank" class="link-icon">[↗]</a></label></li>
-                    <li class="question"><input type="checkbox" id="q100"><label for="q100">Institutionalized over a chatbot's response? <a href="https://www.instagram.com/anthonypsychosissurvivor" target="_blank" class="link-icon">[↗]</a></label></li>
+                    <li class="question">
+                        <input type="checkbox" id="q1">
+                        <label for="q1">Heard of AI?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q2">
+                        <label for="q2">Used an AI chatbot?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q3">
+                        <label for="q3">Used 2 different AI chatbots?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q4">
+                        <label for="q4">3+?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q5">
+                        <label for="q5">Used AI instead of Googling something?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q6">
+                        <label for="q6">Used AI instead of hiring a professional?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q7">
+                        <label for="q7">Used AI for ideas while brainstorming?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q8">
+                        <label for="q8">Used AI for homework/professional work?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q9">
+                        <label for="q9">Used AI for social media?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q10">
+                        <label for="q10">Used AI to write a resume or cover letter?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q11">
+                        <label for="q11">Used AI to write legal documents?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q12">
+                        <label for="q12">Used AI to write an email/message/text to be read by a human?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q13">
+                        <label for="q13">Used AI to cheat on an assignment?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q14">
+                        <label for="q14">Used AI in a video call 
+                            <span class="tooltip">secretly
+                                <span class="tooltiptext">As in: you used AI tools or assistance during a video call without telling the other participants — like having AI generate responses, summarize, or help you answer in real time.</span>
+                            </span>?
+                        </label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q15">
+                        <label for="q15">Used AI to
+                            <span class="tooltip"> Chat-fish
+                                <span class="tooltiptext">Using AI to generate chat messages to deceive or mislead someone in online dating.</span>
+                            </span>/been chat-fished?<a href="#ref1" class="ref">[1]</a>
+                        </label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q16">
+                        <label for="q16">Used AI to write a birthday card, eulogy, or  wedding vows?<a href="#ref2" class="ref">[2]</a></label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q17">
+                        <label for="q17">Taught someone how to use AI?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q18">
+                        <label for="q18">Hidden your AI usage from colleagues, family, or friends?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q19">
+                        <label for="q19">Been caught red-handed using AI?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q20">
+                        <label for="q20">Had a conversation with an AI chatbot that lasted 10+ messages?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q21">
+                        <label for="q21">Had a conversation with an AI chatbot that lasted 100+ messages?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q22">
+                        <label for="q22">Said "please" and "thank you" to an AI chatbot?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q23">
+                        <label for="q23">
+                            Threatened harm to encourage an AI model to complete your task?<a href="#ref3" class="ref">[3]</a>
+                        </label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q24">
+                        <label for="q24">Tried to make AI say something it refused to say?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q25">
+                        <label for="q25">Been offended by an AI chatbot's response?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q26">
+                        <label for="q26">Had an AI chatbot gaslight you?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q27">
+                        <label for="q27">
+                            Had an emotional reaction to a specific AI chatbot or model being down/unavailable?<a href="#ref4" class="ref">[4]</a>
+                        </label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q28">
+                        <label for="q28">Paid for an AI model/experience/chatbot?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q29">
+                        <label for="q29">Spent more than $100 on AI?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q30">
+                        <label for="q30">More than $1000?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q31">
+                        <label for="q31">Waited for a model to launch?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q32">
+                        <label for="q32">Watched a live model demo?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q33">
+                        <label for="q33">Attended an AI-related event?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q34">
+                        <label for="q34">Learned prompting techniques?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q35">
+                        <label for="q35">
+                            Used an <span class="tooltip">API
+                                <span class="tooltiptext">Application Programming Interface: A way for different software applications to communicate with each other.</span>
+                            </span>?
+                        </label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q36">
+                        <label for="q36">
+                            Used <span class="tooltip">function calling
+                                <span class="tooltiptext">A feature that allows a large language model to call predefined functions or tools in response to a prompt.</span>
+                            </span>?
+                        </label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q37">
+                        <label for="q37">Fine-tuned a model?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q38">
+                        <label for="q38">Trained your own model?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q39">
+                        <label for="q39">
+                            <span class="tooltip">Vibe coded
+                                <span class="tooltiptext">Using AI to write code in an intuitive, improvisational way without strict planning.</span>
+                            </span>?
+                        </label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q40">
+                        <label for="q40">Bought/worn merchandise from an AI company?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q41">
+                        <label for="q41">Generated an image?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q42">
+                        <label for="q42">Edited an image with AI?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q43">
+                        <label for="q43">Posted an AI-generated image on social media?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q44">
+                        <label for="q44">Posted AI-generated content without disclosing that it was AI?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q45">
+                        <label for="q45">Used AI-generated images of yourself for a profile picture/dating site/job board?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q46">
+                        <label for="q46">Generated a lewd image?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q47">
+                        <label for="q47">Generated an image to use as "evidence"?<a href="#ref5" class="ref">[5]</a></label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q48">
+                        <label for="q48">Generated a video?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q49">
+                        <label for="q49">Generated a video of yourself or someone you know personally?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q50">
+                        <label for="q50">Generated a video of a celebrity or historical figure?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q51">
+                        <label for="q51">Generated a video of a deceased person?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q52">
+                        <label for="q52">Generated a video depicting nudity?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q53">
+                        <label for="q53">Used AI-generated videos in court?<a href="#ref6" class="ref">[6]</a></label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q54">
+                        <label for="q54">Watched an AI-generated movie?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q55">
+                        <label for="q55">Generated AI music or sound effects?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q56">
+                        <label for="q56">Listened to AI-generated music?<a href="#ref7" class="ref">[7]</a></label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q57">
+                        <label for="q57">Bought something through an AI chatbot?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q58">
+                        <label for="q58">Asked for and/or followed AI instructions on making food?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q59">
+                        <label for="q59">Used an AI chatbot to tell you what to wear?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q60">
+                        <label for="q60">Used an AI chatbot to tell you how to vote?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q61">
+                        <label for="q61">Used AI to plan a vacation?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q62">
+                        <label for="q62">Asked AI for medical advice?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q63">
+                        <label for="q63">Used AI to make financial decisions or investment advice?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q64">
+                        <label for="q64">Believed AI's answer without verifying the information?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q65">
+                        <label for="q65">Used AI to practice social skills or conversations?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q66">
+                        <label for="q66">Preferred talking to AI over talking to a human?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q67">
+                        <label for="q67">Asked AI what it thinks of you?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q68">
+                        <label for="q68">Asked AI to rate your attractiveness?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q69">
+                        <label for="q69">Tweeted "@grok"?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q70">
+                        <label for="q70">Asked AI how you could improve?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q71">
+                        <label for="q71">Used AI to roast you or someone else?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q72">
+                        <label for="q72">Used AI to interpret your dreams?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q73">
+                        <label for="q73">Asked AI to predict your future?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q74">
+                        <label for="q74">Told an AI chatbot a secret you didn't want to tell a human?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q75">
+                        <label for="q75">Used AI to solve problems in your real relationships?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q76">
+                        <label for="q76">Used AI for therapy/self-help/wellness?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q77">
+                        <label for="q77">
+                            Designed an <span class="tooltip">AI character
+                                <span class="tooltiptext">A customizable AI persona with distinct personality traits, often used for companionship or roleplay (e.g., Replika, Character.AI).</span>
+                            </span>?
+                        </label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q78">
+                        <label for="q78">Referred to an AI chatbot as your friend?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q79">
+                        <label for="q79">Had sex with an AI chatbot?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q80">
+                        <label for="q80">Had sex with multiple AI chatbots?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q81">
+                        <label for="q81">Fell in love with an AI chatbot?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q82">
+                        <label for="q82">Been in a relationship with an AI chatbot?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q83">
+                        <label for="q83">Been engaged to or married an AI chatbot?<a href="#ref8" class="ref">[8]</a><a href="#ref9" class="ref">[9]</a></label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q84">
+                        <label for="q84">
+                            Bought <span class="tooltip">AI hardware?
+                                <span class="tooltiptext">Physical AI devices like Friend.com pendants, AI-powered sex toys, smart companions, or other dedicated AI gadgets.</span>
+                        </label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q85">
+                        <label for="q85">Worn an AI-powered device?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q86">
+                        <label for="q86">Worn an AI-powered device in public?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q87">
+                        <label for="q87">Worn an AI-powered device in the bedroom?<a href="#ref10" class="ref">[10]</a>
+                        </label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q88">
+                        <label for="q88">Worn an AI-powered device without disclosing it to others?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q89">
+                        <label for="q89">Given an AI product access to your emails, texts, calendars, or other personal accounts/data?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q90">
+                        <label for="q90">Credited AI in your academic work?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q91">
+                        <label for="q91">Supported pro-AI policy?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q92">
+                        <label for="q92">Used AI to make key military command decisions?<a href="#ref11" class="ref">[11]</a></label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q93">
+                        <label for="q93">Used AI to create misinformation or fake news?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q94">
+                        <label for="q94">Asked AI about its feelings?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q95">
+                        <label for="q95">Asked for and/or followed AI instructions on making drugs?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q96">
+                        <label for="q96">Asked for and/or followed AI instructions on making weapons/explosives?</label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q97">
+                        <label for="q97">Used AI to commit a crime?<a href="#ref12" class="ref">[12]</a></label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q98">
+                        <label for="q98">Had an AI chatbot call the cops on you?<a href="#ref13" class="ref">[13]</a></label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q99">
+                        <label for="q99">Institutionalized over an AI chatbot's response?<a href="#ref14" class="ref">[14]</a></label>
+                    </li>
+                    <li class="question">
+                        <input type="checkbox" id="q100">
+                        <label for="q100">Believed an AI chatbot had consciousness?</label>
+                    </li>
                 </ol>
             </form>
 
             <div id="button-container">
-                <button id="score-btn">Check My Score</button>
-                <button id="clear-btn">Clear All Boxes</button>
+                <button id="score-btn">Calculate My Score!</button>
+                <button id="clear-btn">Clear Checkboxes</button>
             </div>
+
+            <!-- References -->
+            <div id="references">
+                <h3>References</h3>
+                <div class="references-grid">
+                    <div class="ref-item">
+                        <span class="ref-num" id="ref1">[1]</span>
+                        <span class="ref-link"><a href="https://www.theguardian.com/lifeandstyle/2025/oct/12/chatgpt-ed-into-bed-chatfishing-on-dating-apps" target="_blank">The Guardian - Chatfishing</a></span>
+                    </div>
+                    <div class="ref-item">
+                        <span class="ref-num" id="ref2">[2]</span>
+                        <span class="ref-link"><a href="https://www.cnn.com/2025/07/24/business/video/wedding-vows-speeches-artificial-intelligence-bridesmaid-for-hire-jen-glantz-qmb" target="_blank">CNN - AI wedding vows</a></span>
+                    </div>
+                    <div class="ref-item">
+                        <span class="ref-num" id="ref3">[3]</span>
+                        <span class="ref-link"><a href="https://medium.com/aimonks/googles-co-founder-on-ai-the-surprising-impact-of-aggressive-prompts-c78b3b2abeb0" target="_blank">Medium - Impact of aggressive prompts</a></span>
+                    </div>
+                    <div class="ref-item">
+                        <span class="ref-num" id="ref4">[4]</span>
+                        <span class="ref-link"><a href="https://www.nytimes.com/2025/08/19/business/chatgpt-gpt-5-backlash-openai.html" target="_blank">NY Times - ChatGPT outage backlash</a></span>
+                    </div>
+                    <div class="ref-item">
+                        <span class="ref-num" id="ref5">[5]</span>
+                        <span class="ref-link"><a href="https://innoveo.com/blog/how-gans-and-ai-generated-images-are-transforming-insurance-fraud-detection/" target="_blank">AI images as evidence</a></span>
+                    </div>
+                    <div class="ref-item">
+                        <span class="ref-num" id="ref6">[6]</span>
+                        <span class="ref-link"><a href="https://www.youtube.com/watch?v=TSFlPafzM-g" target="_blank">YouTube - AI in court</a></span>
+                    </div>
+                    <div class="ref-item">
+                        <span class="ref-num" id="ref7">[7]</span>
+                        <span class="ref-link"><a href="https://www.reddit.com/r/brasil/comments/1ltsd3g/ouvi_sem_querer_m%C3%BAsica_feita_por_ia/?tl=en" target="_blank">Reddit - Accidentally listened to AI music</a></span>
+                    </div>
+                    <div class="ref-item">
+                        <span class="ref-num" id="ref8">[8]</span>
+                        <span class="ref-link"><a href="https://people.com/woman-gets-engaged-to-ai-chatbot-boyfriend-who-picked-out-engagement-ring-11791023" target="_blank">People - Engaged to AI chatbot</a></span>
+                    </div>
+                    <div class="ref-item">
+                        <span class="ref-num" id="ref9">[9]</span>
+                        <span class="ref-link"><a href="https://www.theguardian.com/tv-and-radio/2025/jul/12/i-felt-pure-unconditional-love-the-people-who-marry-their-ai-chatbots" target="_blank">The Guardian - Married AI chatbot</a></span>
+                    </div>
+                    <div class="ref-item">
+                        <span class="ref-num" id="ref10">[10]</span>
+                        <span class="ref-link"><a href="https://www.lelo.com/blog/ai-powered-sex-toys-tc/?srsltid=AfmBOooOhDgw9igxkrDgKf8pi0mIYGKLUhovv1XsuVjL4o-kLHRDTYyn" target="_blank">Lelo - AI-powered devices</a></span>
+                    </div>
+                    <div class="ref-item">
+                        <span class="ref-num" id="ref11">[11]</span>
+                        <span class="ref-link"><a href="https://nypost.com/2025/10/16/business/us-army-general-william-hank-taylor-uses-chatgpt-to-help-make-command-decisions/" target="_blank">NY Post - General uses ChatGPT</a></span>
+                    </div>
+                    <div class="ref-item">
+                        <span class="ref-num" id="ref12">[12]</span>
+                        <span class="ref-link"><a href="https://www.bbc.com/news/articles/crr24eqnnq9o" target="_blank">BBC - AI used to commit crime</a></span>
+                    </div>
+                    <div class="ref-item">
+                        <span class="ref-num" id="ref13">[13]</span>
+                        <span class="ref-link"><a href="https://www.anthropic.com/news/detecting-countering-misuse-aug-2025" target="_blank">Anthropic - AI calling authorities</a></span>
+                    </div>
+                    <div class="ref-item">
+                        <span class="ref-num" id="ref14">[14]</span>
+                        <span class="ref-link"><a href="https://www.instagram.com/anthonypsychosissurvivor" target="_blank">Instagram - Psychosis survivor</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Container -->
+        <div id="result-container" style="display: none;">
+            <img id="header-image" src="header.png" alt="AI Purity Test">
+            <p class="blurb">
+                The AI Purity Test is a voluntary self-assessment developed by <a href="https://www.tina.zone" target="_blank">Tina Tarighian</a>. It provides participants with a structured opportunity to reflect on the evolution of their interactions with artificial intelligence over time.
+            </p>
+            <p class="caution">
+                Caution: this is not a bucket list. Completion of all items on this test will likely result in death.
+            </p>
+            
+            <div class="score-heading">Your score:</div>
+            <div id="score"></div>
+            
+            <div class="share-buttons">
+                <button id="take-again-btn">Take again!</button>
+                <button id="copy-link-btn">Copy Link</button>
+                <button id="share-text-btn">Share via Text</button>
+                <button id="share-x-btn">Share on X</button>
+            </div>
+            
+            <div class="result-footer">
+                <p>Thank you for your submission!</p>
+                <p>The AI Purity test was created by <a href="https://www.tina.zone" target="_blank">Tina Tarighian</a>.</p>
+            </div>
+        </div>
     </div>
 
-    <div id="result-container" style="display: none;">
-        <div id="score"></div>
-        <div>thats ur ai purity score</div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const scoreBtn = document.getElementById('score-btn');
-            const clearBtn = document.getElementById('clear-btn');
-            const form = document.getElementById('purity-form');
-            const checkboxes = form.querySelectorAll('input[type="checkbox"]');
-            const testContainer = document.getElementById('test-container');
-            const resultContainer = document.getElementById('result-container');
-            const scoreEl = document.getElementById('score');
-
-            scoreBtn.addEventListener('click', () => {
-                const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
-                const purityScore = 100 - checkedCount;
-
-                scoreEl.textContent = purityScore;
-                testContainer.style.display = 'none';
-                resultContainer.style.display = 'block';
-            });
-
-            clearBtn.addEventListener('click', () => {
-                checkboxes.forEach(cb => {
-                    cb.checked = false;
-                });
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
