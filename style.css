@@ -208,6 +208,18 @@ button:hover {
     text-decoration: underline;
 }
 
+#author-link {
+    text-decoration: none;
+}
+#rice-link {
+    text-decoration: none;
+}
+#author-link:hover {
+    text-decoration: underline;
+}
+#rice-link:hover {
+    text-decoration: underline;
+}
 @media (max-width: 600px) {
     .references-grid {
         grid-template-columns: 1fr;
