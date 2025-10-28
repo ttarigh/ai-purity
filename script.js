@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const copyLinkBtn = document.getElementById('copy-link-btn');
     const shareTextBtn = document.getElementById('share-text-btn');
     const shareXBtn = document.getElementById('share-x-btn');
+    const datingProfileBtn = document.getElementById('dating-profile-btn');
     const form = document.getElementById('purity-form');
     const checkboxes = form.querySelectorAll('input[type="checkbox"]');
     const testContainer = document.getElementById('test-container');
@@ -179,5 +180,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
         window.open(twitterUrl, '_blank', 'width=550,height=420');
     });
-});
 
+    // Add to dating profile
+    datingProfileBtn.addEventListener('click', async () => {
+        // Track add to dating profile action
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'share', {
+                'method': 'dating_profile',
+                'content_type': 'score',
+                'score': currentScore
+            });
+        }
+
+        const datingProfileText = `Only matching with people who scored higher than ${currentScore} on aipuritytest.org`;
+        try {
+            await navigator.clipboard.writeText(datingProfileText);
+            const originalText = datingProfileBtn.textContent;
+            datingProfileBtn.textContent = 'Copied!';
+            setTimeout(() => {
+                datingProfileBtn.textContent = originalText;
+            }, 2000);
+        } catch (err) {
+            alert('Failed to copy to clipboard');
+        }
+    });
+});

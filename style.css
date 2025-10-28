@@ -282,6 +282,14 @@ button:hover {
     padding: 15px 30px;
 }
 
+#dating-profile-btn {
+    background-color: #ffebf0;
+    color: #ff216b;
+    font-family: 'Brush Script MT', cursive;
+    font-size:1.3em;
+    /* font-style: italic; */
+}
+
 /* Mobile Button Adjustments */
 @media (max-width: 767px) {
     button {
@@ -358,4 +366,3 @@ button:hover {
         opacity: 0;
     }
 }
-
